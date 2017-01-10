@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Calendario</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+  <p>
+    {{viewTitle}}
+  </p>
+  <button class="button button-outline button-assertive" (click)="addEvent()">
+      Agregar evento
+  </button>
+  <calendar [eventSource]="eventSource"
+    [calendarMode]="calendar.mode"
+    [formatMonthTitle]="MMMM"
+    [currentDate]="calendar.currentDate"
+    (onEventSelected)="onEventSelected($event)"
+    [monthviewDisplayEventTemplate]="templatee"
+    (onTimeSelected)="onTimeSelected($event, this)"
+    (onTitleChanged)="onViewTitleChanged($event)"
+    (onCurrentDateChanged)="onCurrentDateChanged($event)"
+  >
+  </calendar>
+
+</ion-content>

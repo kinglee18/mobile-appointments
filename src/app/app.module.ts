@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { AddEventPage } from '../pages/add-event/add-event';
+import {ContactsComponent} from '../components/contacts/contacts';
 
 
 
@@ -17,7 +18,8 @@ import { AddEventPage } from '../pages/add-event/add-event';
     ContactPage,
     HomePage,
     TabsPage,
-    AddEventPage
+    AddEventPage,
+    ContactsComponent
   ],
   imports: [
     NgCalendarModule,

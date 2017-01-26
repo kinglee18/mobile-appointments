@@ -1,16 +1,19 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Calendario</ion-title>
+    <ion-row>
+      <ion-title>Calendario</ion-title>
+      <button ion-button (click)="addEvent()" color="secondary">Agregar evento</button>
+    </ion-row>
+
   </ion-navbar>
 </ion-header>
+
+
 <ion-content padding>
 
   <p>
     {{viewTitle}}
   </p>
-  <button class="button button-outline button-assertive" (click)="addEvent()">
-      Agregar evento
-  </button>
   <calendar [eventSource]="eventSource"
     [calendarMode]="calendar.mode"
     [formatMonthTitle]="MMMM"

@@ -7,12 +7,42 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>AddEvent</ion-title>
+    <ion-title>Agregar evento</ion-title>
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content padding>
 
+
+    <ion-item>
+      <ion-label stacked >Nombre de evento</ion-label>
+      <ion-input type="text"  value=""></ion-input>
+    </ion-item>
+
+
+    <ion-grid>
+      <ion-row>
+        <ion-label stacked>Desde:</ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-item>
+          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>
+          <ion-datetime (click)="click()"displayFormat="MM/DD/YYYY"  pickerFormat="MMMM DD YYYY"[(ngModel)]="event.dateStarts"></ion-datetime>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-label stacked>Hasta:</ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-item>
+          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>
+          <ion-datetime displayFormat="MM/DD/YYYY"  pickerFormat="MMMM DD YYYY"[(ngModel)]="event.dateStarts"></ion-datetime>
+        </ion-item>
+      </ion-row>
+    </ion-grid>
+    <button ion-button block inline class="button button-outline button-assertive " >
+        Guardar
+    </button>
+    <ion-label >Agregar contactos</ion-label>
+    <contacts></contacts>
 </ion-content>

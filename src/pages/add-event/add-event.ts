@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import Moment from 'moment'
 /*
   Generated class for the AddEvent page.
 
@@ -13,8 +13,10 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class AddEventPage {
   params;
+  event: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.params = navParams;
+    this.event = {}
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddEventPage', this.params);

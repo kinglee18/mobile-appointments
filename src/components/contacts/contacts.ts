@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Contacts } from 'ionic-native'
+import {  ViewController } from 'ionic-angular';
+
 /*
   Generated class for the Contacts component.
 
@@ -15,9 +17,8 @@ export class ContactsComponent {
   text: string;
   contactsfound = [];
 
-  constructor() {
-    console.log('Hello Contacts Component');
-    this.text = 'Hello World';
+  constructor(public viewCtrl: ViewController) {
+
   }
 
   getItems(ev: any ) {
@@ -33,7 +34,24 @@ export class ContactsComponent {
       .then((contacts) => {
           this.contactsfound = contacts
       })
-      .catch(() => console.error('No es posible mostrar contactos'));
+      .catch(
+        () =>{
+          console.error('No es posible mostrar contactos')
+          this.contactsfound = [
+            {displayName: "king"},
+            {displayName: "no "},
+            {displayName: "se"},
+            {displayName: "puede"},
+            {displayName: "mostrar"},
+            {displayName: "contactos"},
+          ];
+        }
+      );
+ }
+
+ chooseContact(contact: Contacts){
+   console.log("console contact", contact)
+   this.viewCtrl.dismiss(contact);
  }
 
 }

@@ -1,25 +1,48 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import Moment from 'moment'
-/*
-  Generated class for the AddEvent page.
+import { NavController, NavParams , ModalController} from 'ionic-angular';
+import * as moment from 'moment';
+import {ContactsComponent } from '../../components/contacts/contacts'
+import {SQLite} from 'ionic-native';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
 @Component({
   selector: 'page-add-event',
-  templateUrl: 'add-event.html'
+  templateUrl: 'add-event.html',
+  providers:[ContactsComponent]
 })
+
 export class AddEventPage {
   params;
   event: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  items = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController ) {
     this.params = navParams;
     this.event = {}
-  }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddEventPage', this.params);
+    this.event.dateStarts = moment(navParams.get("selectedTime").selectedTime).format('YYYY-MM-DD');
+    this.event.timeStarts = moment().format('hh:mm');
   }
 
+  showModal(){
+    let profileModal = this.modalCtrl.create(ContactsComponent);
+    profileModal.present();
+    profileModal.onDidDismiss( data => {
+      this.items.push(data);
+    })
+  }
+
+  bd(){
+    let db = new SQLite();
+    db.openDatabase({
+        name: "data.db",
+        location: "default"
+    }).then(() => {
+        db.executeSql("CREATE TABLE IF NOT EXISTS people (id INTEGER PRIMARY KEY AUTOINCREMENT, firstname TEXT, lastname TEXT)", {}).then((data) => {
+            console.log("TABLE CREATED: ", data);
+        }, (error) => {
+            console.error("Unable to execute sql", error);
+        })
+    }, (error) => {
+        console.error("Unable to open database", error);
+    });
+  }
 }

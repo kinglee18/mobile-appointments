@@ -1,0 +1,24 @@
+<!--
+  Generated template for the ViewEventDetail page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-row>
+      <ion-title>{{ event.title }}</ion-title>
+        <ion-icon ion-button   name="create"></ion-icon>
+    </ion-row>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row>
+    <span>{{event.startTime | date:"dd-MMM-yyyy"}}</span>
+    <span>{{event.startTime | date:"dd-MMM-yyyy"}}</span>
+  </ion-row>
+</ion-content>

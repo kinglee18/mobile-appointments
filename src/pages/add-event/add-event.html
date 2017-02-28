@@ -1,9 +1,4 @@
-<!--
-  Generated template for the AddEvent page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -13,36 +8,59 @@
 </ion-header>
 <ion-content padding>
 
-
     <ion-item>
       <ion-label stacked >Nombre de evento</ion-label>
       <ion-input type="text"  value=""></ion-input>
     </ion-item>
 
-
     <ion-grid>
+      <!--desde -->
       <ion-row>
         <ion-label stacked>Desde:</ion-label>
       </ion-row>
       <ion-row>
-        <ion-item>
-          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>
-          <ion-datetime (click)="click()"displayFormat="MM/DD/YYYY"  pickerFormat="MMMM DD YYYY"[(ngModel)]="event.dateStarts"></ion-datetime>
-        </ion-item>
+        <ion-col width-50>
+          <ion-item>
+            <ion-datetime  (click)="click()"displayFormat="MM/DD/YYYY"  pickerFormat="MM/DD/YYYY"[(ngModel)]="event.dateStarts"></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col width-50>
+          <ion-item>
+            <ion-datetime  (click)="click()"displayFormat="hh:mm a"  pickerFormat="hh:mm a"[(ngModel)]="event.timeStarts"></ion-datetime>
+          </ion-item>
+      </ion-col>
       </ion-row>
+      <!--termina desde -->
+
+      <!--hasta -->
       <ion-row>
         <ion-label stacked>Hasta:</ion-label>
       </ion-row>
       <ion-row>
-        <ion-item>
-          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>
-          <ion-datetime displayFormat="MM/DD/YYYY"  pickerFormat="MMMM DD YYYY"[(ngModel)]="event.dateStarts"></ion-datetime>
-        </ion-item>
+        <ion-col width-50>
+          <ion-item>
+            <ion-datetime  displayFormat="MM/DD/YYYY"  pickerFormat="MM/DD/YYYY"[(ngModel)]="event.dateEnds"></ion-datetime>
+          </ion-item>
+      </ion-col>
+        <ion-col width-50>
+          <ion-item>
+            <ion-datetime displayFormat="hh:mm a"  pickerFormat="hh:mm a"[(ngModel)]="event.timeEnds"></ion-datetime>
+          </ion-item>
+        </ion-col>
       </ion-row>
+      <!--hasta termina -->
     </ion-grid>
+
+    <ion-label>Invitados</ion-label>
+    <button *ngIf="items.length == 0"(click)="showModal()" ion-button block inline class="button button-outline button-assertive ">
+        Agregar contacto
+    </button>
+    <ion-list>
+         <ion-item *ngFor="let item of items">
+             {{item.displayName}}
+         </ion-item>
+    </ion-list>
     <button ion-button block inline class="button button-outline button-assertive " >
         Guardar
     </button>
-    <ion-label >Agregar contactos</ion-label>
-    <contacts></contacts>
 </ion-content>

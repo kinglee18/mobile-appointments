@@ -7,9 +7,9 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { AddEventPage } from '../pages/add-event/add-event';
+import { ViewEventDetailPage } from '../pages/view-event-detail/view-event-detail';
 import {ContactsComponent} from '../components/contacts/contacts';
-
-
+import {LoginPage} from '../pages/login/login'
 
 @NgModule({
   declarations: [
@@ -19,7 +19,9 @@ import {ContactsComponent} from '../components/contacts/contacts';
     HomePage,
     TabsPage,
     AddEventPage,
-    ContactsComponent
+    ViewEventDetailPage,
+    ContactsComponent,
+    LoginPage
   ],
   imports: [
     NgCalendarModule,
@@ -32,7 +34,10 @@ import {ContactsComponent} from '../components/contacts/contacts';
     ContactPage,
     HomePage,
     TabsPage,
-    AddEventPage
+    AddEventPage,
+    ViewEventDetailPage,
+    ContactsComponent,
+    LoginPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

@@ -1,6 +1,9 @@
-<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-<ion-list>
-     <ion-item *ngFor="let item of contactsfound">
-         {{item.displayName}}
-     </ion-item>
-</ion-list>
+
+<ion-content padding class="sample-modal-page">
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+       <ion-item *ngFor="let item of contactsfound" (click)="chooseContact(item)">
+           {{item.displayName}}
+       </ion-item>
+  </ion-list>
+</ion-content>
